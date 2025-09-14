@@ -1,6 +1,6 @@
 # The IFS-Former
 
-a Transformer-based model for trip energy consumption prediction of battery electric vehicles under Inconsistent Feature Spaces.
+A Transformer-based model for trip energy consumption prediction of battery electric vehicles under inconsistent feature spaces.
 
 ### 1. Installation
 ```bash
