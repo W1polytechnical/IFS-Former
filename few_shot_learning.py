@@ -13,6 +13,7 @@ import os
 import random
 from sklearn.metrics import r2_score, mean_absolute_error, mean_squared_error, mean_absolute_percentage_error
 import glob
+import copy
 
 # %%
 num_epochs = 10
@@ -139,9 +140,9 @@ for few in few_shot_ls:
         cat_cols_use = [cat for cat in cat_cols if cat in all_features] # 其余列将直接填为缺失，但mask只有没开启的特征位
         nume_cols_use = [nume for nume in nume_cols if nume in all_features] # 其余列将直接填为缺失，但mask只有没开启的特征位
 
-        dfdata_train = dfdata_train_raw.copy()
-        dfdata_test = dfdata_test_raw.copy()
-        max_min_dict_save = max_min_dict.copy()
+        dfdata_train = dfdata_train_raw.copy(deep=True)
+        dfdata_test = dfdata_test_raw.copy(deep=True)
+        max_min_dict_save = copy.deepcopy(max_min_dict)
 
         # 特征归一化
         for name in nume_cols_use:
@@ -412,4 +413,5 @@ for few in few_shot_ls:
     print('总训练时间(秒): ', total_train_time)
     print('平均训练时间(秒): ', total_train_time/13)
     
+
     print('\n')
