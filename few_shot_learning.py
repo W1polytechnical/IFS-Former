@@ -29,7 +29,7 @@ max_min_dict = {'连续特征0_行程距离': [369.5407184179599, 0.950009996215
 # %%
 # 自定义数据集类
 
-class AMFormerTensorDataset(Dataset):
+class IFSFormerTensorDataset(Dataset):
     def __init__(self, df, nume_features, cat_features, targets,
                  mode=None,
                  droppable_feature_groups=None,
@@ -182,7 +182,7 @@ for few in few_shot_ls:
                 dfdata_train[name] = np.nan # 将未使用的连续特征填充为np.nan，表示缺失值
                 dfdata_test[name] = np.nan # 将未使用的连续特征填充为np.nan，表示缺失值
 
-        train_dataset = AMFormerTensorDataset(
+        train_dataset = IFSFormerTensorDataset(
             df=dfdata_train,
             nume_features=nume_cols,
             cat_features=cat_cols,
@@ -190,7 +190,7 @@ for few in few_shot_ls:
             mode='fine-tune'
         )
 
-        test_dataset = AMFormerTensorDataset(
+        test_dataset = IFSFormerTensorDataset(
             df=dfdata_test,
             nume_features=nume_cols,
             cat_features=cat_cols,
@@ -415,3 +415,4 @@ for few in few_shot_ls:
     
 
     print('\n')
+
